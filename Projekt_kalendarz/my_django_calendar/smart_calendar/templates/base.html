@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="shortcut icon" href="HOME" />
+    <title>Smart Calendar</title>
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Smart Calendar</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="btn btn-outline-primary" href="{% url 'signup' %}">Sign up</a>
+        <a class="btn btn-outline-primary" href="{% url 'login' %}">Log in</a> {% comment%} przeniesienie na odpowiednia strone{% endcomment %}
+      </nav>
+    </div>

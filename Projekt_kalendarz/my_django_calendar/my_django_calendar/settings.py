@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'auth_system'
+    'smart_calendar'
 ]
 
 MIDDLEWARE = [
@@ -69,8 +69,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'my_django_calendar.wsgi.application'
-
-LOGIN_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
