@@ -7,8 +7,6 @@ from django.template import loader
 #     return HttpResponse(template.render())
 
 def user_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
     template = loader.get_template('login.html')
     return HttpResponse(template.render())
     
