@@ -1,0 +1,12 @@
+body {
+    background-image: url('../images/login_back.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; /*fit to window size */
+}
+
+header {
+    color: white;
+    text-align: center;
+    font-size: 100px;
+}
