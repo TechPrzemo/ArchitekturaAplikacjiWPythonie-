@@ -9,8 +9,12 @@
 <body>
     {% block content %}
     <div class="container">
-        <header> WELCOME IN SMART CALENDAR</header>
-        <link rel= "stylesheet" type="text/css" href="{% static 'css/styles_home.css' %}">
+        <h2> WELCOME IN SMART CALENDAR</h2>
+        <p> Status: {{ userStatus }}</p>
+        {%if user%}
+            <p>Logged in as: {{ user }}</p>
+        {%endif%}
+        {% comment %} <link rel= "stylesheet" type="text/css" href="{% static 'css/styles_home.css' %}"> {% endcomment %}
     </div>
     {% endblock %}
 </body>

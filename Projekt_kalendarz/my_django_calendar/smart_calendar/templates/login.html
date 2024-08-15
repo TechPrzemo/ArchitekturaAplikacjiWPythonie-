@@ -7,6 +7,22 @@
    <link rel= "stylesheet" type="text/css" href="{% static 'css/styles_login.css' %}">
 </head>
 <body>
-    <header> LOG INTO CALENDAR</header>
+    <div class="login-page">
+        <div class="form">
+          <form method ="POST" class="login-form">
+            {% csrf_token %}
+            <h3>LOG INTO CALENDAR</h3>
+
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <input type="text" name="username" placeholder="Username" required/>
+            <input type="password" name="password" placeholder="Password" required/>
+            <button type="submit">Login</button>
+            <p class="message">Not registered? <a href="{% url 'signup' %}">Create an account</a></p>
+          </form>
+        </div>
+      </div>
 </body>
-</html>
+</html>  

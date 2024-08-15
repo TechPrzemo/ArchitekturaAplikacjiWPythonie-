@@ -31,7 +31,7 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 5;
-    background: #007bff;
+    background: rgb(43, 114, 196);
     width: 100%;
     border: 0;
     padding: 15px;
@@ -48,7 +48,7 @@
     font-size: 12px;
 }
 .form .message a {
-    color: #007bff;
+    color: rgb(43, 114, 196);
     text-decoration: none;
 }
 
@@ -62,4 +62,3 @@ body {
 h3 {
     color: white;
 }
-
