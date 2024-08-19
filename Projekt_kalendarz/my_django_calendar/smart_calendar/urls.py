@@ -9,5 +9,5 @@ urlpatterns = [
     path('calendar_main/', views.calendar_main, name='calendar'),
     path('get_calendar_days/', views.get_calendar_days, name='get_calendar_days'),
     path('add_event/', views.add_event, name='add_event'),
-    path('del_event/<int:event_id>/', views.del_event, name='del_event')
+    path('del_event/<str:event_id>/', views.del_event, name='del_event')
 ]

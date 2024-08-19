@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.login-page {
+.addevent-page {
     width: 360px;
     padding: 8% 0 0;
     margin: auto;
@@ -75,8 +75,9 @@ body {
     -moz-osx-font-smoothing: grayscale;     
 }
 
-h3 {
+h1 {
     color: white;
+    font-weight: bold;
 }
 
 .error{

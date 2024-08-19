@@ -55,7 +55,7 @@ body {
 
 .days div {
     padding: 5px 0;
-    border: 1px solid #e0e0e0;
+    border: 1px solid white;
     color: white;
     font-weight: bold;
     position: relative;
@@ -82,15 +82,115 @@ body {
     margin-right: auto;
 }
 
-.current-day::after {
-    content: '';
+.today-dot {
+    display: flex;
     width: 10px;
     height: 10px;
     background-color: red;
     border-radius: 50%;
-    display: block;
+    margin-left: 5px;
+    margin-top: 5px;
     position: absolute;
-    top: 5px;
     right: 5px;
+    top: 0.5px;
 }
+
+.not-current-month{
+    background-color: grey;
+    opacity: 0.1;
+}
+
+.button{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 10;
+    background-color: #007bff;
+    padding: 10px;
+    border: 1px;
+    color: #FFFFFF;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    position: absolute;
+    transition-duration: 0.5s;
+}
+
+.logout{
+    width: 5%;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.logout:hover{
+    background-color: red;
+    transition-duration: 0.4s;
+}
+
+.add-event{
+    width: 7%;
+    z-index: 1000;
+    position: absolute;
+    right: 25%;
+    bottom: 25%;
+    margin-bottom: 0.2%;
+}
+
+.add-event:hover{
+    background-color: green;
+    transition-duration: 0.4s;
+}
+
+.welcome-text{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.weather{
+    position: absolute;
+    top: 10px;
+    left: 850px;  /* 550 px -> 1440p*/
+    margin: 10px;
+    z-index: 1000;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.weather span{
+    color: #007bff;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.delete-event{
+    color: #007bff;
+    text-decoration: none;
+}
+
+.delete-event:hover{
+    color: red;
+    text-decoration: solid;
+}
+
+.event-description{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#events-container {
+    margin-top: 10px; 
+}
+
+
+
 

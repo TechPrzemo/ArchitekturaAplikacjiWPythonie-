@@ -1,21 +1,22 @@
-{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <title>HOME</title>
+   <link rel= "stylesheet" type="text/css" href="{% static 'css/styles_home.css' %}">
 </head>
 <body>
-    {% block content %}
-    <div class="container">
-        <h2> WELCOME IN SMART CALENDAR</h2>
-        <p> Status: {{ userStatus }}</p>
-        {%if user%}
-            <p>Logged in as: {{ user }}</p>
-        {%endif%}
-        {% comment %} <link rel= "stylesheet" type="text/css" href="{% static 'css/styles_home.css' %}"> {% endcomment %}
+    <div class="welcome">
+        <div class="title">
+            <h2> WELCOME IN SMART CALENDAR</h2>
+        </div>
+        <div class="button-container">
+            <button class="button login" onclick="location.href = '/login';"><span>LOG IN</span></button>
+            <button class="button signup" onclick="location.href = '/signup';"><span>SIGN UP</span></button>
+        </div>
+            
     </div>
-    {% endblock %}
+    
 </body>
 </html>

@@ -31,15 +31,25 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 5;
-    background: rgb(43, 114, 196);
+    background: #007bff;
     width: 100%;
     border: 0;
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
+    font-weight: bold;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
+}
+
+.form button:hover{
+    background-color: #044890;
+}
+
+.form button:active{
+    background-color: #044890;
+    transform: translateY(1px);
 }
 
 .form .message {
@@ -47,9 +57,14 @@
     color: #b3b3b3;
     font-size: 12px;
 }
+
 .form .message a {
-    color: rgb(43, 114, 196);
+    color: #007bff;
     text-decoration: none;
+}
+
+.form .message a:hover{
+    text-decoration: underline;
 }
 
 body { 
@@ -61,4 +76,10 @@ body {
 
 h3 {
     color: white;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
 }

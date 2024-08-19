@@ -16,8 +16,11 @@
             const calendarDays = document.getElementById('calendar-days');
             const eventsContainer = document.getElementById('events-container');
 
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
             let currentMonth = {{ month }};
             let currentYear = {{ year }};
+            const todayDay = new Date();
 
             function updateCalendar(month, year) {
                 fetch(`/get_calendar_days/?month=${month}&year=${year}`)
@@ -28,14 +31,27 @@
                         data.days.forEach(day => {
                             const dayElement = document.createElement('div');
                             dayElement.textContent = day.day;
+
+                            if (!day.current_month)
+                            {
+                                dayElement.classList.add('not-current-month');
+                            }
+
+                            if(day.day === todayDay.getDate() && month === todayDay.getMonth()+1 && year === todayDay.getFullYear())
+                            {
+                                const dot = document.createElement('span');
+                                dot.className = 'today-dot';
+                                dayElement.appendChild(dot);
+                            }
+
                             calendarDays.appendChild(dayElement);
                         });
-                        monthYearDisplay.textContent = `${data.month} ${data.year}`;
+                        monthYearDisplay.textContent = `${monthNames[data.month-1]} ${data.year}`;
                         
                         data.events.forEach(event => {
                             const eventElement = document.createElement('div');
-                            eventElement.innerHTML = `<strong>${event.title}</strong>: ${JSON.stringify(event, null, 2)}
-                            <a href=" " class="delete-event" data-id='${ event.event_id }'>Delete</a>`;
+                            eventElement.innerHTML = `<span class="event-description">${event.title}: ${event.description} (Day: ${event.date}) </span>
+                            <a href=" " class="delete-event" data-title='${ event.title }'>Delete event</a>`;
                             eventsContainer.appendChild(eventElement);
                         });
                     });
@@ -61,9 +77,7 @@
 
             document.addEventListener('click', function(event) {
                 if (event.target.classList.contains('delete-event')) {
-                    event.preventDefault();
-                    
-                    const event_id = event.target.getAttribute('data-id');
+                    const event_id = event.target.getAttribute('data-title');
                     console.log("event_id:", event_id);
 
                     if (event_id){
@@ -77,12 +91,11 @@
                         }).then(response => {
                             if (response.ok) {
                                 event.target.parentElement.remove(); // Usunięcie elementu z DOM
+                                Location.reload();
                             } else {
                                 alert('Failed to delete event.');
                                 console.log(event.event_id)
                             }
-                        }).catch(error => {
-                            alert(`Error: ${error.message}`);
                         });
                     
                 } else if (!event_id) {
@@ -99,6 +112,20 @@
 <body>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 
+    <div class="panel">
+        <div class="welcome-text">
+            {%if user%}
+                <p>Welcome: {{ user }}</p>
+            {%endif%}
+        </div>
+        <div class="weather">
+            <p>Today in: {{ weather.city }}:  <span>{{ weather.temperature }}°C</span></p>
+            <p>{{ weather.description }}</p>
+        </div>
+        <div class="button-container">
+            <button class="button logout" onclick="location.href = '/logout';">LOG OUT</button>
+        </div>
+    </div>
     <div class="calendar-container">
         <div class="month-nav">
             <button id="prev-month">Previous</button>
@@ -116,18 +143,18 @@
                 <div>Sunday</div>
             </div>
             <div id="calendar-days" class="days"></div>
+            <div>
+                <button class="button add-event" onclick="location.href= '/add_event';">Add Event</button>
+            </div>
         </div>
         <div id="events-container">
             {% for event in events %}
             <div>
-                <strong>{{ event.title }}</strong>: ({{ event }})
-                <a href="#" class="delete-event" data-id="{{ event.event_id }}">Delete</a>
+                <strong>{{ event.title }}</strong>:
+                <a href="#" class="delete-event" data-title="{{ event.title }}">Delete event</a>
 
             </div>
             {% endfor %}    
-        </div>
-        <div>
-            <a href="{% url 'add_event' %}">Add Event</a>
         </div>
     </div>
 </body>
